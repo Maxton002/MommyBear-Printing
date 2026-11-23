@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MommyBear Printing</title>
+    <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- SHARED HEADER -->
+    <header>
+      <div class="logo" onclick="showPage('services')">
+        <img src="logo.png" class="brandLogo" />
+        <div class="title">
+          <p class="mainName">MommyBear</p>
+          <p class="subName">Printing</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#services" id="nav-services" class="active" onclick="showPage('services'); return false;">Services</a>
+        <a href="#about" id="nav-about" onclick="showPage('about'); return false;">About</a>
+        <a href="#contact" id="nav-contact" onclick="showPage('contact'); return false;">Contact</a>
+        <a href="#order" id="nav-order" onclick="showPage('order'); return false;">Order now</a>
+        <button id="theme-toggle" class="theme-btn" onclick="toggleDarkMode()">🌙 Dark</button>
+      </nav>
+    </header>
+
+    <br />
+    <br />
+
+    <!-- PAGE 1: SERVICES -->
+    <section id="services" class="page-section active">
+      <div class="middle">
+        <center>
+          <h1>Cute prints, made with love.</h1>
+          <p>
+            Photos, stickers, envelopes, laminates & more -printed fast and done
+            right
+          </p>
+        </center>
+      </div>
+
+      <div class="services">
+        <div class="buttons">
+          <span class="btn blue active" onclick="selectService('print', this)">Print</span>
+          <span class="btn green" onclick="selectService('photos', this)">Photos</span>
+          <span class="btn pink" onclick="selectService('envelopes', this)">Envelopes</span>
+          <span class="btn purple" onclick="selectService('laminate', this)">Laminate & PVC</span>
+          <span class="btn yellow" onclick="selectService('stickers', this)">Stickers</span>
+          <span class="btn orange" onclick="selectService('sintraboard', this)">Sintraboard & Magnet</span>
+        </div>
+        <div class="card" id="service-card">
+          <h2 id="card-title">Print</h2>
+          <p id="card-count">4 options available</p>
+          <div class="chips" id="card-chips">
+            <span><strong>Documents (A4 & Short)</strong> &mdash; <span class="chip-price">₱5 B&W / ₱10 Colored / ₱20 Full Page Photo</span></span>
+            <span><strong>Documents (Long)</strong> &mdash; <span class="chip-price">₱6 B&W / ₱10 Colored / ₱20 Full Page Photo</span></span>
+            <span><strong>Scan</strong> &mdash; <span class="chip-price">₱5</span></span>
+          </div>
+          <a href="#order" onclick="orderCurrentService(); return false;" class="order" id="card-order-btn">Order Print &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: ABOUT -->
+    <section id="about" class="page-section">
+      <div class="middle">
+        <center>
+          <h1>About us</h1>
+        </center>
+      </div>
+
+      <div class="aboutcard">
+        <h2>Our Story</h2>
+        <p>
+          MommyBear Printing started at our home where we have a printer and decided to make a business out of it. 
+          It was a small side hustle that my family and friends helped with and thanks to them it has grown into a business we’re proud of. 
+          Everything we make is still handled by the family. 
+          We treat every order like it’s for one of our own.
+        </p>
+        <h2>What we do</h2>
+        <p>
+          We print the things that make your events, business, and everyday moments special. 
+          We can make stickers and invitations to tarpaulins and custom designs, we’ll help you get the right look at the best price.
+        </p>
+      </div>
+    </section>
+
+    <!-- PAGE 3: CONTACT -->
+    <section id="contact" class="page-section">
+      <div class="middle">
+        <center>
+          <h1>Contact us</h1>
+          <p>
+             
+          </p>
+        </center>
+      </div>
+      <div class="contactcard">
+        <div class="contact-list">
+          <div class="contact-item">
+            <p>Email</p>
+            <h2>mommybearprinting@gmail.com</h2>
+          </div>
+
+          <div class="contact-item">
+            <p>Facebook / Messenger</p>
+            <h2>@mommybearprinting</h2>
+          </div>
+
+          <div class="contact-item">
+            <p>Phone</p>
+            <h2>0949 695 2031</h2>
+          </div>
+
+          <div class="contact-item">
+            <p>Address</p>
+            <h2>1424 Crisostomo St Corner Maria Clara, Sampaloc, Manila</h2>
+          </div>
+
+          <div class="contact-item">
+            <p>Store hours</p>
+            <h2>Mon - Sun 12:00 PM - 10:00 PM</h2>
+          </div>
+        </div>
+        <br />
+        <a href="#order" onclick="showPage('order'); return false;" class="contactorder">Order now</a>
+      </div>
+    </section>
+
+    <!-- PAGE 4: ORDER -->
+    <section id="order" class="page-section">
+      <div class="middle">
+        <center>
+          <h1>Order now</h1>
+          <p>Fill out your details below and we'll get right on your prints!</p>
+        </center>
+      </div>
+
+      <div class="ordercard">
+        <button type="button" class="back-btn" onclick="goBack()">&larr; Back</button>
+
+        <form id="order-form" onsubmit="submitOrder(event)" novalidate>
+          <div class="form-group">
+            <label for="customer-name">Full Name <span class="req">*</span></label>
+            <input type="text" id="customer-name" placeholder="Juan Dela Cruz" oninput="clearError(this)" />
+            <span class="error-msg" id="err-customer-name">Please enter your full name.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="customer-contact">Facebook / Messenger or Phone Number <span class="req">*</span></label>
+            <input type="text" id="customer-contact" placeholder="@juandelacruz or 09XX XXX XXXX" oninput="clearError(this)" />
+            <span class="error-msg" id="err-customer-contact">Please enter your Messenger or phone number.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="service-select">Service Type <span class="req">*</span></label>
+            <select id="service-select" onchange="updateOrderOptions()">
+              <option value="print">Print</option>
+              <option value="photos">Photos</option>
+              <option value="envelopes">Envelopes</option>
+              <option value="laminate">Laminate & PVC</option>
+              <option value="stickers">Stickers</option>
+              <option value="sintraboard">Sintraboard & Magnet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="option-select">Specific Option <span class="req">*</span></label>
+            <select id="option-select" onchange="calculateTotal()">
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="file-upload">Upload Design / Document <span class="req">*</span></label>
+            <label for="file-upload" class="file-dropzone" id="file-dropzone">
+              <span id="file-label-text">📎 Click to choose file(s) (PDF, PNG, JPG, DOCX)</span>
+            </label>
+            <input type="file" id="file-upload" multiple accept=".pdf,.png,.jpg,.jpeg,.doc,.docx" onchange="handleFileChange(this)" />
+            <span class="error-msg" id="err-file-upload">Please upload at least one file to print.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="order-quantity">Copies <span class="req">*</span></label>
+            <input type="number" id="order-quantity" value="1" min="1" oninput="calculateTotal(); clearError(this);" />
+            <span class="error-msg" id="err-order-quantity">Please enter a valid quantity.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="order-details">Additional Notes / Instructions</label>
+            <textarea id="order-details" rows="3" placeholder="Paper type, size preferences, or special instructions..."></textarea>
+          </div>
+
+          <div class="total-box" id="total-box">
+            <div class="total-breakdown">
+              <span class="total-label">Estimated Total</span>
+              <span class="total-sub" id="total-formula">₱5 × 1</span>
+            </div>
+            <span class="total-amount" id="total-amount">₱5</span>
+          </div>
+
+          <button type="submit" class="contactorder" style="border: none; cursor: pointer;">
+            Submit Order &rarr;
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SHARED FOOTER -->
+    <footer>
+      <div class="logo2">
+        <img src="logo.png" class="brandLogo2" />
+        <div class="title2">
+          <p class="mainName2">MommyBear</p>
+          <p class="subName2">Printing</p>
+        </div>
+      </div>
+      <div class="info">
+        <p>mommybearprinting@gmail.com</p>
+        <p>@mommybearprinting</p>
+        <p>0949 695 2031</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
